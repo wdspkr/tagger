@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tagged.title %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @tagged.creator %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @tagged.url %>
+</p>
+
+<%= link_to 'Edit', edit_tagged_path(@tagged) %> |
+<%= link_to 'Back', taggeds_path %>
