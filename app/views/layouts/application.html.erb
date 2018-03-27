@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <% flash.each do |type, notice| %>
+      <div class="alert <%= type == 'alert' ? 'alert-danger' : 'alert-primary' %>">
+        <%== notice %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
