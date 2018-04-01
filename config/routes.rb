@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :taggeds
+  resources :records
   devise_for :users
 
   root to: "home#index"
