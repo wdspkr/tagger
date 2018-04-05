@@ -5,11 +5,10 @@
     <div class="card-body">
       <h5 class="card-title"><%= record.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= record.creator %></h6>
-      <%= link_to "Link", record.url, class: "btn btn-primary card-link" %>
-      <%= link_to 'Show', record, class: "card-link" %>
+      <%= link_to 'Link', record.url, class: "btn btn-primary card-link" %>
+      <%= link_to 'Show tags', record_tags_path(record), class: "card-link" %>
       <%= link_to 'Edit', edit_record_path(record), class: "card-link" %>
       <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
-      </tr>
     </div>
   </div>
 <% end %>
