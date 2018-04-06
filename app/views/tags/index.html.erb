@@ -9,6 +9,11 @@
         <span class="badge badge-pill badge-secondary"><%= tag.term %></span>
       <% end %>
     </p>
+    <p class="card-text">
+      <% @record.scale_tags.each do |tag| %>
+        <span class="badge badge-pill badge-secondary"><%= "#{tag.scale_left} – #{tag.scale_right}: #{tag.value}" %></span>
+      <% end %>
+    </p>
 
     <%= link_to "Link", @record.url, class: "btn btn-primary card-link" %>
     <%= link_to "Add more tags", new_record_tag_path(@record), class: "card-link" %>

@@ -1,0 +1,6 @@
+<% [[-1,'++'],[-0.5,'+'],[0,'0'],[0.5,'+'],[1,'++']].each do |val, text| %>
+  <span class="btn btn-secondary scale-tag-button"
+        data-scale-id="<%= scale_id %>"
+        data-scale-value="<%= val %>"
+  ><%= text %></span>
+<% end %>

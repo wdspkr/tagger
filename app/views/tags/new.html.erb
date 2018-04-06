@@ -2,33 +2,10 @@
 
 <%= form_for :tags, as: :post, url: record_tags_path(@record) do |f| %>
 
-  <h3>Free tags:</h3>
-  <div>
-    <% Descriptive.all.each do |desc| %>
-      <span class="btn btn-secondary free-tag-button" data-descriptive-id='<%= desc.id %>'><%= desc.term %></span>
-    <% end %>
-  </div>
+  <%= render 'free_tags_form', f: f %>
+  <%= render 'scale_tags_form', f: f %>
 
-  <%= f.hidden_field :free_tags %>
-  <div class="form-group">
-    <%= f.text_field :new_descriptives, placeholder: "New terms (semicolon seperated)", class: "form-control" %>
-  </div>
   <%= f.submit 'Add tags', class: "btn btn-primary" %>
 
   <%= link_to 'Back', record_tags_path(@record) %>
 <% end %>
-
-<script type="text/javascript">
-  $('.free-tag-button').click(function() {
-    var descId = $(this).data('descriptiveId').toString();
-    var ids = $('input#tags_free_tags').val().split(",").filter(item => item !== "");
-    if (ids.indexOf(descId) == -1) {
-      ids.push(descId);
-      $(this).addClass('active');
-    } else {
-      ids = ids.filter(id => id !== descId);
-      $(this).removeClass('active');
-    }
-    $('input#tags_free_tags').val(ids);
-  });
-</script>

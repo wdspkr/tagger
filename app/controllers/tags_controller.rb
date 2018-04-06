@@ -2,7 +2,6 @@ class TagsController < ApplicationController
   before_action :set_record
 
   def index
-
   end
 
   def new
@@ -11,6 +10,8 @@ class TagsController < ApplicationController
   def create
     FreeTagger.call(@record, tags_params[:free_tags], current_user)
     NewDescriptiveTagger.call(@record, tags_params[:new_descriptives], current_user)
+    ScaleTagger.call(@record, tags_params[:scale_tags], current_user)
+    NewScaleTagger.call(@record, tags_params[:scale_tags], current_user)
     redirect_to record_tags_path(@record)
   end
 
@@ -20,6 +21,6 @@ class TagsController < ApplicationController
     end
 
     def tags_params
-      params.require(:tags).permit(:free_tags, :new_descriptives)
+      params.require(:tags).permit(:free_tags, :new_descriptives, :scale_tags)
     end
 end

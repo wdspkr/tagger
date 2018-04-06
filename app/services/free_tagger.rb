@@ -10,7 +10,7 @@ class FreeTagger
   def call
     descriptive_ids.each do |id|
       if descriptive = Descriptive.find(id)
-        FreeTag.create(
+        FreeTag.create!(
           descriptive: descriptive,
           record: record,
           user: user,

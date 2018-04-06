@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :records
   has_many :free_tags
+  has_many :scale_tags
 end

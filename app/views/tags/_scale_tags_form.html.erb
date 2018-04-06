@@ -1,0 +1,52 @@
+<h3>Scale tags:</h3>
+
+<div class="text-center">
+  <% Scale.all.each do |scale| %>
+    <div class="tag-scale">
+      <%= scale.left %>
+      <%= render 'scale', scale_id: scale.id %>
+      <%= scale.right %>
+    </div>
+  <% end %>
+  <div class="tag-scale">
+    <%= text_field_tag :new_scale_left, nil,
+        placeholder: 'New scale left term',
+        class: "new-scale-term",
+        data: {'scale-side' => 'left'} %>
+    <%= render 'scale', scale_id: 'new' %>
+    <%= text_field_tag :new_scale_right, nil,
+        placeholder: 'New scale right term',
+        class: "new-scale-term",
+        data: {'scale-side' => 'right'} %>
+  </div>
+</div>
+
+<%= f.hidden_field :scale_tags %>
+
+<script type="text/javascript">
+
+  var scaleTags = {};
+  $('input#tags_scale_tags').val(JSON.stringify(scaleTags));
+
+  $('.scale-tag-button').click(function() {
+    var scaleId = $(this).data('scaleId').toString();
+    var scaleValue = $(this).data('scaleValue').toString();
+    if (scaleTags[scaleId] !== scaleValue) {
+      scaleTags[scaleId] = scaleValue;
+      $('[data-scale-id=' + scaleId + ']').removeClass('active');
+      $(this).addClass('active');
+    } else {
+      delete scaleTags[scaleId]
+      $(this).removeClass('active');
+    }
+    $('input#tags_scale_tags').val(JSON.stringify(scaleTags));
+  });
+
+  $('.new-scale-term').keyup(function() {
+    var scaleSide = $(this).data('scaleSide').toString();
+    var scaleTerm = $(this).val();
+    if (scaleTags['new_scale'] == undefined) scaleTags['new_scale'] = {};
+    scaleTags['new_scale'][scaleSide] = scaleTerm;
+    $('input#tags_scale_tags').val(JSON.stringify(scaleTags));
+  });
+</script>

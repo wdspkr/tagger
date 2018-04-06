@@ -1,0 +1,27 @@
+<h3>Free tags:</h3>
+<div>
+  <% Descriptive.all.each do |desc| %>
+    <span class="btn btn-secondary free-tag-button" data-descriptive-id='<%= desc.id %>'><%= desc.term %></span>
+  <% end %>
+</div>
+
+<%= f.hidden_field :free_tags %>
+<div class="form-group">
+  <%= f.text_field :new_descriptives, placeholder: 'New terms (semicolon seperated)', class: "form-control" %>
+</div>
+
+<script type="text/javascript">
+  var freeTagIds = [];
+
+  $('.free-tag-button').click(function() {
+    var descId = $(this).data('descriptiveId').toString();
+    if (freeTagIds.indexOf(descId) == -1) {
+      freeTagIds.push(descId);
+      $(this).addClass('active');
+    } else {
+      freeTagIds = freeTagIds.filter(id => id !== descId);
+      $(this).removeClass('active');
+    }
+    $('input#tags_free_tags').val(freeTagIds);
+  });
+</script>

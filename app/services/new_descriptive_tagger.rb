@@ -9,7 +9,7 @@ class NewDescriptiveTagger
 
   def call
     new_terms.each do |term|
-      descriptive = Descriptive.find_or_create_by(term: term)
+      descriptive = Descriptive.find_or_create_by!(term: term)
       FreeTagger.call(record, descriptive.id, user)
     end
   end
