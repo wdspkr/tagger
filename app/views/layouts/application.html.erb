@@ -9,6 +9,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'hello_vue' %>
   </head>
 
   <body>
@@ -19,6 +21,8 @@
         </div>
       <% end %>
       <%= yield %>
+      <br>
+      <%= link_to 'go home', root_path %>
     </div>
   </body>
 </html>
