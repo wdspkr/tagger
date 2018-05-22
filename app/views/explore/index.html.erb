@@ -1,0 +1,14 @@
+<div id="explorer">
+  <free-tag
+    v-for="tag in freeTags"
+    v-bind:key="'tag-' + tag.id"
+    v-bind:tag="tag"
+    v-on:filter="filterByFreeTag">
+  </free-tag>
+
+  <record
+    v-for="record in records"
+    v-bind:key="'record-' + record.id"
+    v-bind:record="record">
+  </record>
+</div>

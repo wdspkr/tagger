@@ -9,18 +9,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'explorer' %>
   </head>
 
   <body>
     <div class="container">
-      <% flash.each do |type, notice| %>
-        <div class="alert <%= type == 'alert' ? 'alert-danger' : 'alert-primary' %>">
-          <%== notice %>
-        </div>
-      <% end %>
       <%= yield %>
-      <br>
-      <%= link_to 'go home', root_path %>
     </div>
   </body>
 </html>
