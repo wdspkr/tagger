@@ -1,7 +1,12 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-.free-tag-button, .tag-scale {
+.free-tag-button,
+.tag-scale {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
+}
+
+#explorer .free-tag-button {
+  margin: 0.3rem 0.15rem;
 }

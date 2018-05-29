@@ -1,5 +1,9 @@
 <template>
-  <div class="btn btn-secondary free-tag-button" v-on:click="filter">{{ tag.term }}</div>
+  <div class="btn btn-info free-tag-button"
+    v-on:click="filter"
+    v-bind:class="{ active: tag.active, disabled: tag.disabled}">
+    {{ tag.term }}
+  </div>
 </template>
 
 <script>
